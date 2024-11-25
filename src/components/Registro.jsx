@@ -44,7 +44,7 @@ const Registro = () => {
     if (validateForm()) {
       try {
         // Realiza una solicitud POST al backend para registrar al usuario
-        const response = await axios.post('https://backend-video-max.vercel.app/registro', {
+        const response = await axios.post('https://backend-video-max.vercel.app/api/users/register', {
           nombre: formData.nombre,
           correo: formData.correo,
           fechaNacimiento: formData.fechaNacimiento,
