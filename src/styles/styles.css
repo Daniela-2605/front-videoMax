@@ -1,0 +1,152 @@
+body {
+    background-image: url('/assets/background2.png'); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    background: rgba(255, 255, 255, 0.3); /* Fondo semitransparente */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); /* Sombra más pronunciada */
+    width: 300px;
+    text-align: center;
+    backdrop-filter: blur(3px); /* Aplica el desenfoque al fondo */
+    color: rgb(103, 29, 143);
+    border: 1px solid black;
+    
+    
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+
+    input[type="text"], input[type="password"] {
+        background-color: rgba(0, 0, 0, 0.5);  /* Fondo oscuro con transparencia */
+        border: 1px solid #333;  /* Borde más oscuro */
+        color: #000000;  /* Color más oscuro para el texto (puedes ajustar este valor) */
+        padding: 10px;
+        border-radius: 5px;
+        width: 100%;
+        margin-bottom: 15px;
+        font-size: 1em;
+        outline: none;  /* Elimina el borde azul por defecto cuando se hace foco */
+        box-sizing: border-box;
+      }
+      
+      /* Estilo para cuando el input está enfocado */
+      input[type="text"]:focus, input[type="password"]:focus {
+        border-color: #000; /* Borde más oscuro cuando se hace foco */
+        background-color: rgba(0, 0, 0, 0.7); /* Fondo más oscuro al hacer foco */
+      }
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: rgba(209, 203, 203, 0.171);
+    color: rgb(13, 6, 6);
+  }
+  
+  .button {
+    background-color: #7f4b8d;  /* Color morado */
+    color: white;  /* Color del texto */
+    padding: 10px 20px;  /* Espaciado interior */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;  /* Si quieres que ocupe todo el ancho del contenedor */
+    max-width: 300px;  /* Limitar el ancho máximo */
+    margin: 10px auto;  /* Márgenes automáticos para centrar */
+    display: block;  /* Asegura que el botón sea un bloque */
+  }
+  
+  .button:hover {
+    background: #7d3c98;
+  }
+  
+  /* Estilo general para el contenedor del formulario */
+  .registro-container {
+    width: 100%; /* Ajusta al 100% del ancho del contenedor principal */
+    max-width: 800px; /* El máximo ancho será de 800px */
+    margin: 0 auto; /* Centra el contenedor */
+    padding: 20px;
+    backdrop-filter: blur(8px);
+    background-color: #d2ccd57b;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(207, 207, 207, 0.727);
+  }
+  
+  .registro-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #efefef;
+  }
+  
+  /* Estilo para los campos del formulario */
+  form div {
+    margin-bottom: 15px;
+  }
+  
+  form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #070707;
+  }
+  
+  form input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  form input:focus {
+    outline-color: #dfe2e3fb;
+  }
+  
+  /* Estilo para los mensajes de error */
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Estilo para el botón de submit */
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4e2eccc0;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #27ae60;
+  }
+  
+  /* Estilo para los botones de 'Volver' */
+  button.volver {
+    background-color: #e74c3c;
+  }
+  
+  button.volver:hover {
+    background-color: #c0392b;
+  }
