@@ -1,27 +1,29 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Cambié useHistory por useNavigate
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate(); // Cambié useHistory por useNavigate
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
+      console.log('Intentando iniciar sesión con:', { username, password });
       const response = await axios.post('https://backend-video-max.vercel.app/api/users/login', {
         username,
         password,
       });
       setMessage(response.data.message);
     } catch (error) {
+      console.error('Error al iniciar sesión:', error);
       setMessage("Credenciales incorrectas");
     }
   };
 
   const handleRegisterRedirect = () => {
-    navigate("/registro"); // Redirige a la página de registro usando navigate
+    navigate("/registro");
   };
 
   return (
@@ -45,8 +47,6 @@ const Login = () => {
         Login
       </button>
       <p>{message}</p>
-
-      {/* Botón para abrir la página de registro */}
       <button className="button" onClick={handleRegisterRedirect}>
         Regístrame
       </button>

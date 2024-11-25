@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios"; // Importa axios
+import axios from "axios";
 import '../styles/styles.css'; // Asegúrate de que la ruta del CSS esté correcta
 
 const Registro = () => {
@@ -12,7 +12,7 @@ const Registro = () => {
 
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Para mostrar errores
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,12 +23,11 @@ const Registro = () => {
   };
 
   const handleBackClick = () => {
-    window.location.href = "/"; // Redirige al inicio de sesión
+    window.location.href = "/";
   };
 
   const validateForm = () => {
     const newErrors = {};
-    // Validar campos obligatorios
     if (!formData.nombre) newErrors.nombre = "Nombre completo es obligatorio";
     if (!formData.fechaNacimiento) newErrors.fechaNacimiento = "Fecha de nacimiento es obligatoria";
     if (!formData.correo) newErrors.correo = "Correo electrónico es obligatorio";
@@ -43,7 +42,7 @@ const Registro = () => {
 
     if (validateForm()) {
       try {
-        // Realiza una solicitud POST al backend para registrar al usuario
+        console.log('Datos enviados:', formData);
         const response = await axios.post('https://backend-video-max.vercel.app/api/users/register', {
           nombre: formData.nombre,
           correo: formData.correo,
@@ -51,9 +50,8 @@ const Registro = () => {
           contrasena: formData.contrasena,
         });
 
-        // Si la respuesta es exitosa, mostramos el mensaje de éxito
         setSuccessMessage(response.data.message);
-        setErrorMessage(""); // Limpiar mensaje de error
+        setErrorMessage("");
         setFormData({
           nombre: "",
           fechaNacimiento: "",
@@ -62,10 +60,9 @@ const Registro = () => {
         });
         setErrors({});
       } catch (error) {
-        // Si ocurre un error, mostramos el mensaje de error
-        console.error(error);
+        console.error('Error al registrar:', error);
         setErrorMessage('Hubo un error al registrar el usuario. Intenta nuevamente.');
-        setSuccessMessage(""); // Limpiar mensaje de éxito
+        setSuccessMessage("");
       }
     }
   };
