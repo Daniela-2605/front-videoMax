@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import '../styles/styles.css';  // Asegúrate de que la ruta del CSS esté correcta
+import axios from "axios"; // Importa axios
+import '../styles/styles.css'; // Asegúrate de que la ruta del CSS esté correcta
 
 const Registro = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ const Registro = () => {
 
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Para mostrar errores
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,19 +38,35 @@ const Registro = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      // Simulación de éxito en el registro
-      setSuccessMessage("Usuario creado con éxito");
-      setFormData({
-        nombre: "",
-        fechaNacimiento: "",
-        correo: "",
-        contrasena: "",
-      });
-      setErrors({});
+      try {
+        // Realiza una solicitud POST al backend para registrar al usuario
+        const response = await axios.post('https://backend-video-max.vercel.app/api/register', {
+          nombre: formData.nombre,
+          correo: formData.correo,
+          fechaNacimiento: formData.fechaNacimiento,
+          contrasena: formData.contrasena,
+        });
+
+        // Si la respuesta es exitosa, mostramos el mensaje de éxito
+        setSuccessMessage(response.data.message);
+        setErrorMessage(""); // Limpiar mensaje de error
+        setFormData({
+          nombre: "",
+          fechaNacimiento: "",
+          correo: "",
+          contrasena: "",
+        });
+        setErrors({});
+      } catch (error) {
+        // Si ocurre un error, mostramos el mensaje de error
+        console.error(error);
+        setErrorMessage('Hubo un error al registrar el usuario. Intenta nuevamente.');
+        setSuccessMessage(""); // Limpiar mensaje de éxito
+      }
     }
   };
 
@@ -109,10 +127,12 @@ const Registro = () => {
       </form>
 
       {successMessage && <p className="success">{successMessage}</p>}
+      {errorMessage && <p className="error">{errorMessage}</p>}
     </div>
   );
 };
 
 export default Registro;
+
 
 
