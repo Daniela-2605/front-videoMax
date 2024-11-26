@@ -49,7 +49,7 @@ body {
   }
   
   .input {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid black;
@@ -66,7 +66,7 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
-    width: 100%;  /* Si quieres que ocupe todo el ancho del contenedor */
+    width: 90%;  /* Si quieres que ocupe todo el ancho del contenedor */
     max-width: 300px;  /* Limitar el ancho máximo */
     margin: 10px auto;  /* Márgenes automáticos para centrar */
     display: block;  /* Asegura que el botón sea un bloque */
@@ -149,4 +149,233 @@ body {
   
   button.volver:hover {
     background-color: #c0392b;
+  }
+
+
+  .home {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: white; /* Fondo negro */
+    backdrop-filter: blur(3px); /* Aplica el desenfoque al fondo */
+    box-shadow: 0 0 20px 10px rgba(115, 53, 187, 0.8); /* Borde brillante */
+    animation: glow 1.5s ease-in-out infinite; /* Animación para que el borde brille */
+  }
+  
+  .sidebar {
+    width: 200px;
+    background-color: #232323; /* Cambia este color al que prefieras */
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    height: 100%;
+    backdrop-filter: blur(3px);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Agrega una sombra para destacar la barra */
+  }
+  
+  .sidebar button {
+    background-color: #8563bf;
+    color: rgb(0, 0, 0);
+    margin: 20px 0;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: #888;
+  }
+  
+  .videos-section {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .videos-section {
+    flex: 1;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Asegura que el contenido sea vertical */
+    justify-content: flex-start; /* Alinea el contenido hacia la parte superior */
+  }
+  
+  .bordered-element {
+    border: 2px solid white;
+    padding: 20px;
+    color: white;
+    background-color: rgb(225, 220, 220);
+    text-align: center;
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .bordered-element:hover {
+    box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.8);
+  }
+
+  
+  .videos-section {
+    flex: 1;
+    color: white;
+    padding: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right; /* Alinea el contenido hacia la parte superior */
+  }
+  
+  .title {
+    font-size: 70px;
+    font-weight: funtastic;
+    color: #53428d; /* Color del título */
+    margin-top: -300px; /* Espaciado desde la parte superior */
+  }
+
+  .subir-video {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: auto;
+  }
+  
+  .subir-video h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .subir-video form div {
+    margin-bottom: 15px;
+  }
+  
+  .subir-video button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .subir-video button:hover {
+    background-color: #0056b3;
+  }
+
+  .home {
+    display: flex;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-button {
+    background-color: #444;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: left;
+  }
+  
+  .sidebar-button:hover {
+    background-color: #555;
+  }
+  
+  .main-section {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .title {
+    color: #333;
+    font-size: 10em;
+  }
+  
+  .search-input {
+    margin-top: 30px;
+    padding: 20px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #33b32d;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .video-list {
+    display: grid; /* Usamos grid para que los videos se alineen en una cuadrícula */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Definimos el tamaño de las columnas y los videos */
+    gap: 20px; /* Separación entre los videos */
+    justify-items: center; /* Alinea los videos al centro */
+  }
+  
+  .video-item {
+    background-color: #5255bb;
+    padding: 10px;
+    border-radius: 8px;
+    width: 320px; /* Aseguramos que el video tenga un tamaño consistente */
+    text-align: center;
+  }
+  
+  video {
+    width: 100%; /* Hace que el video ocupe todo el contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    max-width: 320px; /* Asegura que el video no se haga más grande que el contenedor */
+    max-height: 240px; /* Limita la altura del video */
+  }
+  
+  button {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .upload-section {
+    padding: 20px;
+    background-color: #fafafa;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .upload-section input,
+  .upload-section button {
+    margin: 10px;
+  }
+  
+  .upload-button-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .upload-button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .upload-button:hover {
+    background-color: darkgreen;
   }

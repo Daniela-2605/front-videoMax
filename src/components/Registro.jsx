@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import '../styles/styles.css'; // Asegúrate de que la ruta del CSS esté correcta
 
 const Registro = () => {
@@ -37,33 +36,32 @@ const Registro = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (validateForm()) {
-      try {
-        console.log('Datos enviados:', formData);
-        const response = await axios.post('https://backend-video-max.vercel.app/api/users/register', {
-          nombre: formData.nombre,
-          correo: formData.correo,
-          fechaNacimiento: formData.fechaNacimiento,
-          contrasena: formData.contrasena,
-        });
+      // Guardamos el usuario en localStorage para que persista después del registro
+      const newUser = {
+        username: formData.correo, // Usamos el correo como username
+        password: formData.contrasena,
+      };
 
-        setSuccessMessage(response.data.message);
-        setErrorMessage("");
-        setFormData({
-          nombre: "",
-          fechaNacimiento: "",
-          correo: "",
-          contrasena: "",
-        });
-        setErrors({});
-      } catch (error) {
-        console.error('Error al registrar:', error);
-        setErrorMessage('Hubo un error al registrar el usuario. Intenta nuevamente.');
-        setSuccessMessage("");
-      }
+      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+      storedUsers.push(newUser);
+      localStorage.setItem("users", JSON.stringify(storedUsers));
+
+      setSuccessMessage("Usuario registrado con éxito.");
+      setErrorMessage("");
+      setFormData({
+        nombre: "",
+        fechaNacimiento: "",
+        correo: "",
+        contrasena: "",
+      });
+      setErrors({});
+    } else {
+      setErrorMessage("Por favor, llena todos los campos requeridos.");
+      setSuccessMessage("");
     }
   };
 
@@ -130,6 +128,7 @@ const Registro = () => {
 };
 
 export default Registro;
+
 
 
 

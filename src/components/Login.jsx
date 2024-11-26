@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import '../styles/styles.css'; // Asegúrate de que la ruta del CSS esté correcta
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -9,15 +10,23 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    try {
-      console.log('Intentando iniciar sesión con:', { username, password });
-      const response = await axios.post('https://backend-video-max.vercel.app/api/users/login', {
-        username,
-        password,
-      });
-      setMessage(response.data.message);
-    } catch (error) {
-      console.error('Error al iniciar sesión:', error);
+    // Validar si los campos están vacíos
+    if (!username || !password) {
+      setMessage("Por favor, ingresa tu usuario y contraseña.");
+      return;
+    }
+
+    // Obtener los usuarios almacenados en localStorage
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+    // Buscar el usuario en la lista
+    const user = storedUsers.find(u => u.username === username && u.password === password);
+
+    if (user) {
+      setMessage("Bienvenido!");
+      localStorage.setItem("userId", user.username); // Guarda el ID del usuario o algún token si es necesario
+      navigate("/home"); // Redirige a la página de inicio o donde corresponda
+    } else {
       setMessage("Credenciales incorrectas");
     }
   };
@@ -55,4 +64,5 @@ const Login = () => {
 };
 
 export default Login;
+
 
